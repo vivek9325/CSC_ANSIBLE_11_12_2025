@@ -1,0 +1,16 @@
+---
+
+- hosts: centos
+  user: root
+  gather_facts: false
+
+  vars:
+    motd_message: "Welcome to CentOS Linux - Ansible Rocks"
+
+  tasks:
+    - name: Configure a MOTD(Message of the Day)
+      copy:
+        content: "{{motd_message}}\n"
+        dest: /etc/mot
+
+...

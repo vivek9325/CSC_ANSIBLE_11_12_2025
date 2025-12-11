@@ -1,0 +1,27 @@
+---
+
+- hosts: centos
+  user: root
+  gather_facts: false
+
+  vars:
+    motd_message: "Welcome to CentOS Linux - Ansible Rocks123"
+   # motd_new_message: "This is the new MOTD set by Ansible"
+
+  tasks:
+    - name: Configure a MOTD(Message of the Day)
+      copy:
+        content: "{{motd_message}}\n"
+        dest: /etc/motd
+      notify: Update MOTD
+
+  handlers:
+    - name: Update MOTD
+      debug:
+        msg: "The MOTD has been Changed successfully"
+
+
+
+    
+
+...

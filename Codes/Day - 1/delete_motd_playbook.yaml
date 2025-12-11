@@ -1,0 +1,12 @@
+---
+
+- hosts: centos
+  user: root
+
+  tasks:
+    - name: Configure a MOTD(Message of the Day)
+      file:
+        dest: /etc/motd
+        state: absent
+
+...
