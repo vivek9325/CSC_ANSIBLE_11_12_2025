@@ -1,8 +1,17 @@
 [ubuntu]
-ubuntu1
-ubuntu2
-ubuntu3
+ubuntu[1:3]
+
+[centos]
+centos[1:3]
 
 [ubuntu:vars]
 ansible_password=password
 ansible_connection=ssh
+
+[centos:vars]
+ansible_password=password
+ansible_connection=ssh
+
+[linux:children]
+ubuntu
+centos
