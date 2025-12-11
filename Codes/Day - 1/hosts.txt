@@ -1,0 +1,8 @@
+[ubuntu]
+ubuntu1
+ubuntu2
+ubuntu3
+
+[ubuntu:vars]
+ansible_password=password
+ansible_connection=ssh

@@ -17,3 +17,20 @@
    15  sudo apt install docker-compose
    16  docker-compose version
    17  history
+
+
+
+1  clear
+    2  git clone https://github.com/spurin/diveintoansible-lab.git
+    3  ll
+    4  cd diveintoansible-lab/
+    5  ll
+    6  sudo docker compose up
+    8  sudo docker images
+    9  sudo docker ps
+
+
+
+34  sudo apt-get update
+   35  sudo apt-get install -y sshpass
+
