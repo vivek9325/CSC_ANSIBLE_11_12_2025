@@ -1,0 +1,19 @@
+- hosts: linux
+  become: true
+
+  tasks:
+    - name: Deployment with error handling
+      block:
+        - name: Deploy App
+          command: random.sh
+          register: deploy_app
+          failed_when: "'Error' in deploy_app.stdout"
+
+      rescue:
+        - name: Rollback
+          command: random.sh
+
+      always:
+        - name: Notify
+          debug:
+            msg: "Deployment Finished"
