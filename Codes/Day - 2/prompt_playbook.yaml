@@ -1,0 +1,23 @@
+- hosts: linux
+  become: true
+
+  vars_prompt:
+    - name: env
+      prompt: "Enter environment"
+      default: dev
+
+
+  tasks:
+    - name: Print
+      copy:
+        content: "Welcome"
+        dest: /etc/file
+      tags: print
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+      tags: install
+
+    
