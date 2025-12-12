@@ -1,13 +1,22 @@
-- hosts: linux
+- hosts: control
+  connection: local
   become: true
 
   tasks:
     - name: Deployment with error handling
       block:
         - name: Deploy App
-          command: random.sh
+          command: /etc/ansible/random.sh
+          delegate_to: ubuntu-c
           register: deploy_app
           failed_when: "'Error' in deploy_app.stdout"
+
+        - name: Verify execution location
+          debug:
+            msg: "This task is part of host {{ inventory_hostname }} but executed on localhost"
+          delegate_to: ubuntu-c
+          run_once: true
+
 
       rescue:
         - name: Rollback
