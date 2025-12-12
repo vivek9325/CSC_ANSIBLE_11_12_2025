@@ -1,20 +1,15 @@
-
 - hosts: linux
   become: true
 
-  vars:
-    motd_centos: "Welcome to CentOS Linux Server"
-    motd_ubuntu: "Welcome to the Ubuntu Linux Server"
-
   tasks:
-    - name: Configure the CentOS Server
+    - name: Configure the Servers
       copy:
-        content: "Welcome to {{item}} Linux server"
-        dest: /etc/motd
+        content: "Welcomessss to {{item}} Linux server"
+        dest: /etc/motd1
       notify: MOTD Change
       with_items:
-        -Ubuntu
-        -CentOs
+        - Ubuntu
+        - CentOS
 
       when: ansible_distribution == item
 
